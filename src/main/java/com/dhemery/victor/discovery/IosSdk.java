@@ -5,6 +5,7 @@ import com.dhemery.configuration.ContextItemCache;
 /**
  * Represents an iOS SDK.
  */
+@SuppressWarnings("UnusedDeclaration")
 public class IosSdk {
     public static final String GENERIC_SDK_NAME = "iphonesimulator";
     public static final String NAME_FOR_SDK_VERSION = GENERIC_SDK_NAME + "%s";
@@ -13,7 +14,7 @@ public class IosSdk {
     public static final String SDK_VERSION = "SDKVersion";
     public static final String SIMULATOR_BINARY_PATH_FOR_PLATFORM = "%s/Developer/Applications/iPhone Simulator.app/Contents/MacOS/iPhone Simulator";
     private static final ContextItemCache sdkInfo = new SdkInfoCache();
-    protected final String canonicalName;
+    private final String canonicalName;
 
     public IosSdk(String canonicalName) {
         this.canonicalName = canonicalName;
