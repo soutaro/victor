@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Represents an application bundle.
  */
 @SuppressWarnings("UnusedDeclaration")
 public class IosApplicationBundle {
@@ -28,7 +27,10 @@ public class IosApplicationBundle {
 
     public IosApplicationBundle(String path) {
         this.path = path;
-        plist = new PList(path + "/Info.plist");
+        String plistPath = path + "/Info.plist";
+        requireFile(path, "application bundle");
+        requireFile(plistPath, "Info.plist in application bundle");
+        plist = new PList(plistPath);
     }
 
     /**
@@ -64,6 +66,13 @@ public class IosApplicationBundle {
      */
     public String executableName() {
         return plist.stringValue(EXECUTABLE_NAME);
+    }
+
+    private void requireFile(String path, String description) {
+        File file = new File(path);
+        if(!file.exists()) {
+            throw new IosDeviceConfigurationException(String.format("Can not find %s at %s", description, path));
+        }
     }
 
     /**

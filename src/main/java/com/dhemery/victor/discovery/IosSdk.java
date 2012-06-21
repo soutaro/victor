@@ -48,7 +48,7 @@ public class IosSdk {
     }
 
     public boolean isInstalled() {
-        return !path().isEmpty() && path().charAt(0) == '/';
+        return path() != null;
     }
 
     public String sdkInfo(String itemName) {
