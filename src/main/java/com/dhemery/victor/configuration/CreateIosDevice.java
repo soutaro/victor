@@ -118,6 +118,7 @@ public class CreateIosDevice {
         return configuration.option(DEVICE_TYPE);
     }
 
+    @SuppressWarnings("MethodWithMultipleReturnPoints")
     private IosSdk sdk() {
         IosSdk sdk;
         if(configuration.defines(SDK_VERSION)) {
